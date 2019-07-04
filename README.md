@@ -3,11 +3,13 @@ DeepDRv1 includes the preditor (DeepDRpredictor.R) for prediction any given cell
 
 It also includes procedure for generating the patients clone information from allele fraction data that came from FIREHOSE (FIREHOSE-tumor-vaf-processing).
 
-Before using DeepDRv1, the example test data cell_tst, drug_tst, and mut_data.RData have to be obtained at /testdata.
-
 To get the prediction score (DeepDR score) for tesing cell-drug pairs with the monoclonal model, run the following in R
 
 DeepDRpredictor<-DeepDRpredictor(cell_tst,drug_tst,"mutation")
+
+#cell_tst is test cell mutation profile
+
+#drug_tst is test drug chemical properties profile
 
 To get the toxicity for test drug, using toxicity.R by the follwoing:
 tox<-toxicity(drug_known,drug_test,AUCDR)

@@ -1,21 +1,22 @@
 # DeepDRv1
-DeepDRv1 includes the preditor (DeepDRpredictor.R) for prediction any given cell-drug relationship, DeepDRc.R for generating the best drug repurposing combination for cancer patient treatment.
-
-It also includes procedure for generating the patients clone information from allele fraction data that came from FIREHOSE (FIREHOSE-tumor-vaf-processing).
+DeepDRv1 includes the preditor (DeepDRpredictor.R) for prediction any given cell-drug relationship.
 
 To get the prediction score (DeepDR score) for tesing cell-drug pairs with the monoclonal model, run the following in R
 
-DeepDRpredictor<-DeepDRpredictor(cell_tst,drug_tst,"mutation")
+Usage example:
 
-#cell_tst is test cell mutation profile
+DeepDRpredictor<-DeepDRpredictor(cell_tst,drug_tst,categary) 
+
+#cell_tst is test cell profile, could be one of mutation, copy number, methylation,expression, or integration
 
 #drug_tst is test drug chemical properties profile
 
-To get the toxicity for test drug, using toxicity.R by the follwoing:
-tox<-toxicity(drug_known,drug_test,AUCDR)
+#categary is the data type for cancer genomics, could be one of mutation, copy number, methylation,expression, or integration
 
-#AUCDR is the drug response matrix in training set with column as drug
+This procedure is used CTRP and GDSC non-redundant data (including 10,754 sensitive and 10,607 resistant cell-drug pairs) as the training data
 
 #drug_known is the drug profile in training set
 
-#drug_test is the drug profile in test set
+#cell_known is the cell profile in training set
+
+#AUCmat_comb_S is the digitalized drug sensitivities 

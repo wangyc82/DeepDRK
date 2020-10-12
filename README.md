@@ -1,7 +1,7 @@
-# DeepDRv1
-DeepDRv1 includes the preditor (DeepDRpredictor.R) for prediction any given cell-drug relationship.
+# DLDR
+DLDR includes the preditor (DLDRpredictor.R) for prediction any given cell-drug relationship.
 
-To get the prediction score (DeepDR score) for tesing cell-drug pairs, just run the DeepDRpredictor.R.
+To get the prediction score (DLDR score) for tesing cell-drug pairs, just run the DLDRpredictor.R.
 
 First you have to prepare the omics profile for cancer cells, including mutation at gene level, copy number at gene level, DNA methylation at gene level, and gene expression.
 
@@ -21,7 +21,7 @@ The benchmark data for training is combination-data.RData. It includes the cance
 
 Usage example:
 
-DeepDRpredictor<-DeepDRpredictor(cell_tst,drug_tst) 
+predictions<-DLDRpredictor(cell_tst,drug_tst) 
 
 
 

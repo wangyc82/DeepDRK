@@ -6,7 +6,7 @@
 # make sure you cell_profile and drug profile have the same feature (same gene set for cell_profile, same descriptor for drug_profile) with the training data
 # the cell/patient profiles is deposited as a list of cell_tst containg mutation, copy number variation, DNA methylation, and gene expression profiles for common cells/patients
 # the drug profile is deposited as a list of drug_tst containg chemical properties, and target proteins for common drugs
-DeepDRpredictor<-function(cell_tst,drug_tst)
+DLDRpredictor<-function(cell_tst,drug_tst)
 {
   load("~/Documents/DeepDR-sofware/combination-data.RData")
   

@@ -17,13 +17,7 @@ Both chemical properties and target profile must represent the same set of drugs
 
 To use the predictor (DeepDRpredictor.R), the benchmark data for training (combination-data.RData) have to be downloaded in advance. 
 
-The benchmark data for training is combination-data.RData.
-
-combination-data.RData includes the cancer-drug associations generated from GDSC and CTRP non-redundent data. 
-
-combination-data.RData includes cancer omics profiles and drug chemical properties and target protein profiles.
-
-combination-data.RData includes the cancer and drug similarity matrices based on cancer omics and drug chemical properties and target proteins.
+The benchmark data for training is combination-data.RData. It includes the cancer-drug associations generated from GDSC and CTRP non-redundent data, cancer omics profiles and drug chemical properties and target protein profiles, and the cancer and drug similarity matrices based on cancer omics and drug chemical properties and target proteins.
 
 Usage example:
 

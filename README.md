@@ -1,7 +1,7 @@
 # DLDR
-DLDR includes the preditor (DLDRpredictor.R) for prediction any given cell-drug relationship.
+DeepDR includes the preditor (DeepDRpredictor.R) for prediction any given cell-drug relationship.
 
-To get the prediction score (DLDR score) for tesing cell-drug pairs, just run the DLDRpredictor.R.
+To get the prediction score (DeepDR score) for tesing cell-drug pairs, just run the DLDRpredictor.R.
 
 First you have to prepare the omics profile for cancer cells, including mutation at gene level, copy number at gene level, DNA methylation at gene level, and gene expression.
 
@@ -15,13 +15,13 @@ The target proteins have to be represented by a binary vector to indicate whethe
 
 Both chemical properties and target profile must represent the same set of drugs, and prepare in a R list data, such as drug_tst.
 
-To use the predictor (DLDRpredictor.R), the benchmark data for training (combination-data.RData) have to be downloaded in advance. 
+To use the predictor (DeepDRpredictor.R), the benchmark data for training (combination-data.RData) have to be downloaded in advance. 
 
-The benchmark data for training is combination-data.RData. It includes the cancer-drug associations generated from GDSC and CTRP non-redundent data, cancer omics profiles and drug chemical properties and target protein profiles, and the cancer and drug similarity matrices based on cancer omics and drug chemical properties and target proteins.
+The benchmark data for training is combination-data.RData. It includes the cancer-drug associations generated from GDSC data, cancer omics profiles and drug chemical properties and target protein profiles, and the cancer and drug similarity matrices based on cancer omics and drug chemical properties and target proteins.
 
 Usage example:
 
-predictions<-DLDRpredictor(cell_tst,drug_tst) 
+predictions<-DeepDRpredictor(cell_tst,drug_tst) 
 
 
 

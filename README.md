@@ -1,4 +1,4 @@
-# DLDR
+# DeepDR
 DeepDR includes the preditor (DeepDRpredictor.R) for prediction any given cell-drug relationship.
 
 To get the prediction score (DeepDR score) for tesing cell-drug pairs, just run the DLDRpredictor.R.

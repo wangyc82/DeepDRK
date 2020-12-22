@@ -28,6 +28,8 @@ The chemical properties are the molecular properties based on checmical structur
 
 Both chemical properties and target profile must represent the same set of drugs, and have to be prepared into R list format, such as drug_tst in example.data.
 
+example.data.RData is an example input file demonstrating the format of the input data. combination-data.RData contains all data for training DeepDR model.
+
 3. Running DeepDR
 
 The main function of DeepDR is DeepDRpredictor.R. Get your input files prepared, and run it like this:

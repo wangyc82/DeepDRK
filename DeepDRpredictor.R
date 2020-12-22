@@ -8,16 +8,16 @@
 # the drug profile is deposited as a list of drug_tst containg chemical properties, and target proteins for common drugs
 DeepDRpredictor<-function(cell_tst,drug_tst)
 {
-  load("~/Documents/DeepDR-sofware/combination-data.RData")
+  load("~/DeepDRv1/combination-data.RData")
   
   #preparing the inputs for input for deep learning method
   sim_cell<-cbind(sim_mut,sim_CN,sim_methy,sim_exp)
   sim_drug<-cbind(sim_comp,sim_DT)
   
-  A<-which(AUCmat_comb_S==1,arr.ind = TRUE)
-  B<-which(AUCmat_comb_S==-1,arr.ind = TRUE)
-  Xprn<-cbind(sim_cell[A[,1],],sim_comp[A[,2],])
-  Xnrn<-cbind(sim_cell[B[,1],],sim_comp[B[,2],])
+  A<-which(AUC_matS_comb==1,arr.ind = TRUE)
+  B<-which(AUC_matS_comb==-1,arr.ind = TRUE)
+  Xprn<-cbind(sim_cell[A[,1],],sim_drug[A[,2],])
+  Xnrn<-cbind(sim_cell[B[,1],],sim_drug[B[,2],])
   Xrn<-rbind(Xprn,Xnrn)
   Yrn<-c(rep("a",nrow(A)),rep("b",nrow(B)))
   data_trn<-data.frame(Xrn,Yrn)
@@ -36,14 +36,14 @@ DeepDRpredictor<-function(cell_tst,drug_tst)
   Csim_mut<-exp(-as.matrix(dist(rbind(cell_mut[,intersect(colnames(cell_mut),colnames(cell_trs_mut))],cell_trs_mut[,intersect(colnames(cell_mut),colnames(cell_trs_mut))]),method = "binary")))
   Csim_CN<-exp(-0.001*as.matrix(dist(rbind(cell_CN[,intersect(colnames(cell_CN),colnames(cell_trs_CN))],cell_trs_CN[,intersect(colnames(cell_CN),colnames(cell_trs_CN))]))))
   Csim_methy<-exp(-0.001*as.matrix(dist(rbind(cell_methy[,intersect(colnames(cell_methy),colnames(cell_trs_methy))],cell_trs_methy[,intersect(colnames(cell_methy),colnames(cell_trs_methy))]))))
-  Csim_exp<-exp(-0.001*as.matrix(dist(rbind(cell_exp[,intersect(colnames(cell_exp),colnames(cell_trs_exp))],cell_trs_exp[,intersect(colnames(cell_exp),colnames(cell_trs_exp))]))))
+  Csim_exp<-exp(-0.001*as.matrix(dist(rbind(cell_exp[,match(intersect(colnames(cell_exp),colnames(cell_trs_exp)),colnames(cell_exp))],cell_trs_exp[,match(intersect(colnames(cell_exp),colnames(cell_trs_exp)),colnames(cell_trs_exp))]))))
   
   Csim_tst<-cbind(Csim_mut[rownames(cell_trs_mut),rownames(cell_mut)],Csim_CN[rownames(cell_trs_CN),rownames(cell_CN)],Csim_methy[rownames(cell_trs_methy),rownames(cell_methy)],Csim_exp[rownames(cell_trs_exp),rownames(cell_exp)])
   
   drug_tst_comp<-drug_tst[[1]]
   drug_tst_DT<-drug_tst[[2]]
   
-  Dsim_comp<-exp(-0.001*as.matrix(dist(rbind(drug_comp[,intersect(colnames(drug_comp),colnames(drug_tst_comp))],drug_tst_comb[,intersect(colnames(drug_comp),colnames(drug_tst_comp))]))))
+  Dsim_comp<-exp(-0.001*as.matrix(dist(rbind(drug_comp[,intersect(colnames(drug_comp),colnames(drug_tst_comp))],drug_tst_comp[,intersect(colnames(drug_comp),colnames(drug_tst_comp))]))))
   Dsim_DT<-exp(-as.matrix(dist(rbind(drug_DT[,intersect(colnames(drug_DT),colnames(drug_tst_DT))],drug_tst_DT[,intersect(colnames(drug_DT),colnames(drug_tst_DT))]),method = "binary")))
   
   Dsim_tst<-cbind(Dsim_comp[rownames(drug_tst_comp),rownames(drug_comp)],Dsim_comp[rownames(drug_tst_DT),rownames(drug_DT)])

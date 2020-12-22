@@ -22,13 +22,13 @@ git clone https://github.com/wangyc82/DeepDRv1
 
 The input files includes the omics profile for cancer cells, including mutation at gene level, copy number at gene level, DNA methylation at gene level, and gene expression, and the drug properties, including chemical properties generated from chemical structures, and target proteins.
 
-All these omics profiles must represent same set of cancer cells, that is, you have to prepare these omics data for same set of cancer cells, and let them is a R list data, such as cell_tst in example.data.
+All these omics profiles must represent same set of cancer cells, and they are prepared into R list format, such as cell_tst in example.data.
 
-The chemical properties are the molecular fingerprints based on checmical structures.
+The chemical properties are the molecular fingerprints/properties based on checmical structures.
 
 The target proteins have to be represented by a binary vector to indicate whether the given protein is annotated as the drug target.
 
-Both chemical properties and target profile must represent the same set of drugs, and prepare in a R list data, such as drug_tst in example.data.
+Both chemical properties and target profile must represent the same set of drugs, and have to be prepared into R list format, such as drug_tst in example.data.
 
 3. Running DeepDR
 
@@ -38,7 +38,17 @@ Usage example:
 
 predictions<-DeepDRpredictor(cell_tst,drug_tst) 
 
-The output is the porbability of
+The output describes the probability that the test cell is sensitive to the test drug
+
+# Dependencies
+
+The models are trained by using h2o package in R. The dependency requirements are automatically solved while running the program.
+
+# Contact
+
+For technical issues please send an email to ycwang@nwipb.cas.cn or jgwang@ust.hk.
+
+
 
 
 

@@ -8,7 +8,7 @@ Active development
 # Introduction
 
 Accurately predicting the response of a cancer patient to a therapeutic agent is core goal of precision oncology. Among various obstacles hindering clinical translation, the lack of effective multimodal and multi-source data integration methods has become a bottleneck. DeepDR provides a systematic way to predict drug response from different resources, diverse cancer types, and various chemical compounds, based on kernel-based integration of multi-source data from genomics,
-transcriptomics, epigenomics, and chemical properties and previously reported target protein of compounds.
+transcriptomics, epigenomics, and chemical properties and previously reported target proteins of compounds.
 
 # Usage
 
@@ -20,7 +20,7 @@ git clone https://github.com/wangyc82/DeepDRv1
 
 2. Preparing the input files
 
-The input files includes the omics profiles for cancer cells, including mutation at gene level, copy number at gene level, DNA methylation at gene level, and gene expression, and the drug properties, including chemical properties generated from chemical structures, and target proteins.
+The input files includes the omics profiles for cancer cells, including mutation at gene level, copy number at gene level, DNA methylation at gene level, and gene expression, and the drug properties, including chemical properties generated from chemical structures, and previously reported target proteins.
 
 All these omics profiles must represent the same set of cancer cells, and they are prepared into R list format, such as cell_tst in example.data.
 

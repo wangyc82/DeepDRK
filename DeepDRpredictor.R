@@ -1,11 +1,8 @@
 # this procedure is for prediction of the relationship between cancer cells/patients and anti-cancer drugs
-# this is based on CTRP and GDSC non-redundent data
-# it could be applied on mutation, copy number variation, DNA methylation, gene expression profiles for cell/patients, and drug chemical property and target proteins
-# drug chemical property is generated through QuaSAR-Descriptor in the Molecular Operating Environment (MOE)
-# categary is indicater for expression, mutation
-# make sure you cell_profile and drug profile have the same feature (same gene set for cell_profile, same descriptor for drug_profile) with the training data
-# the cell/patient profiles is deposited as a list of cell_tst containg mutation, copy number variation, DNA methylation, and gene expression profiles for common cells/patients
-# the drug profile is deposited as a list of drug_tst containg chemical properties, and target proteins for common drugs
+# it could be applied on mutation, copy number variation, DNA methylation, gene expression profiles for cell/patients, and drug chemical properties and target proteins
+# drug chemical properties are generated through QuaSAR-Descriptor in the Molecular Operating Environment (MOE) based on drug's chemical structure
+# the cell/patient data is deposited as a list in cell_tst containg mutation, copy number variation, DNA methylation, and gene expression profiles for common cells/patients
+# the drug data is deposited as a list in drug_tst containg chemical properties, and target proteins for common drugs
 DeepDRpredictor<-function(cell_tst,drug_tst)
 {
   load("~/DeepDRv1/combination-data.RData")

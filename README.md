@@ -8,7 +8,7 @@ Active development
 # Introduction
 
 Accurately predicting the response of a cancer patient to a therapeutic agent is core goal of precision oncology. Among various obstacles hindering clinical translation, the lack of effective multimodal and multi-source data integration methods has become a bottleneck. DeepDR provides a systematic way to predict drug response from different resources, diverse cancer types, and various chemical compounds, based on kernel-based integration of multi-source data from genomics,
-transcriptomics, epigenomics, and chemical properties of compounds.
+transcriptomics, epigenomics, and chemical properties and previously reported target protein of compounds.
 
 # Usage
 

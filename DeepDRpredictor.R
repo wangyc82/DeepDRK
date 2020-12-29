@@ -58,7 +58,7 @@ DeepDRpredictor<-function(cell_tst,drug_tst)
   model_prediction<-h2o.predict(model, test.hex)
   prob_test<-as.data.frame(model_prediction)[,1]
   S<-data.frame(cell=rownames(cell_trs_exp)[Ast[,1]],drug=rownames(drug_tst_DT)[Ast[,2]],prob=prob_test)
-  return(S)
   h2o.shutdown()
+  return(S)
 }
   

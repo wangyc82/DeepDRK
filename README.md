@@ -45,21 +45,25 @@ Six csv files are needed to represent the multi-omic profile of cancer cells, i.
 The input file representing the genomic mutations of the cancer cells is a data matrix. The rows of the matrix are cancer cells, the columns are genes, and the elements of the matrix are variables of 0 or 1. 1 means the target gene is mutated in the cell, and 0 means no mutation in the cell. The number of column is the number of genes, and they are separated by tab delimiter.
  
 mutation.csv
+
 <img width="432" alt="Screenshot 2563-12-29 at 5 09 13 PM" src="https://user-images.githubusercontent.com/36029032/103272932-0c7af080-49f9-11eb-85c8-6c922dd6cefd.png">
 
 The input file representing the copy number alterations, the status of DNA methylation, and the gene expression of the cancer cells are data matrices (CN.csv, methylation.csv, expression.csv). The rows of these matrices are cancer cells, the columns are genes, and the elements of the matrices are variables of float, integer, and float, respectively, representing the copy number, methylation, and expression of gene in the cell. The number of column of these matrices are the number of genes, and columns are separated by tab delimiter.
 
 expression.csv
+
 <img width="444" alt="Screenshot 2563-12-29 at 5 14 38 PM" src="https://user-images.githubusercontent.com/36029032/103273070-5ebc1180-49f9-11eb-9ac7-9174c71529d9.png">
 
 The input file representing the chemical properties of the cancer drugs is a data matrix (chem.csv). The rows of the matrix are cancer drugs, the columns are chemical properties, and the elements of the matrix are variables of float. The number of column is the number of chemical properties, and the columns are separated by tab delimiter. To get chemical properties of cancer drugs, the chemical structure sdf file has to be prepared in advance, and upload it into “StarVue” (StarVue-macinstall-1.4.dmg) software to get the chemical molecular descriptors (QuaSAR-Descriptor in the Molecular Operating Environment (MOE)).
 
 chem.csv
+
 <img width="965" alt="Screenshot 2563-12-29 at 5 09 42 PM" src="https://user-images.githubusercontent.com/36029032/103273098-74c9d200-49f9-11eb-819a-fe6d82ceea6f.png">
 
 The input file representing the known target proteins of the cancer drugs is a data matrix (DT.csv). The rows of the matrix are cancer drugs, the columns are target proteins, and the elements of the matrix are variables of 0 or 1. 1 means the target protein is a binding protein for a given drug, and 0 means not binding. The number of column is the number of proteins, and the columns are separated by tab delimiter.
 
 DT.csv
+
 <img width="432" alt="Screenshot 2563-12-29 at 5 09 13 PM" src="https://user-images.githubusercontent.com/36029032/103273223-b6f31380-49f9-11eb-8b91-70fa23e340fd.png">
 
 The example input files can be found in Github repository data folder.
@@ -93,9 +97,11 @@ DT <- read_csv("~/DeepDRv1/data/DT.csv");A<-data.matrix(DT[,-1]);rownames(A)<- D
 source('~/DeepDRv1/DeepDRpredictor.R')
 
 predictions<-DeepDRpredictor(cell_tst,drug_tst)
+
 <img width="348" alt="Screenshot 2563-12-29 at 11 49 02 AM" src="https://user-images.githubusercontent.com/36029032/103273130-8c08bf80-49f9-11eb-834a-d53cded05b17.png">
 
 The true relationships between test cells and drugs are
+
 <img width="324" alt="Screenshot 2563-12-29 at 11 52 23 AM" src="https://user-images.githubusercontent.com/36029032/103273169-9fb42600-49f9-11eb-98d5-1fbccb7a7097.png">
 
 
@@ -124,6 +130,7 @@ missDtype=2
 source('~/DeepDRv1/DeepDRpredictor.e.R')
 
 predictions<-DeepDRpredictor.e(cell_tst,drug_tst,missCtype,missDtype)
+
 <img width="346" alt="Screenshot 2563-12-29 at 4 51 48 PM" src="https://user-images.githubusercontent.com/36029032/103273243-cbcfa700-49f9-11eb-9b86-79c91c8c6ff1.png">
 
 # Contact

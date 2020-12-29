@@ -20,15 +20,21 @@ Installation: git clone https://github.com/wangyc82/DeepDRv1
 If the data (combination-data.RData) is incomplete, download it by clicking this file.
 
 Dependencies: 
+
 R;
+
 Readr1.3.1 and all its dependencies;
-h2o package (h2o_3.32.0.1.tgz) and its dependencies; 
+
+h2o package (h2o_3.32.0.1.tgz) and its dependencies;
+
 Oracle JDK (Java SE Development Kit 11.0.9).
 
 Testing of successful installation by running the following in R
 
 library(readr)
+
 library(h2o)
+
 h2o.init()
 
 and get something like the following

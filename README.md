@@ -33,7 +33,7 @@ h2o.init()
 
 and get something like the following
 
-
+![DeepDRKgithub1](https://user-images.githubusercontent.com/36029032/103272576-341d8900-49f8-11eb-9164-99cf3174aa95.png)
 
 
 
@@ -76,39 +76,22 @@ cell_tst<-list()
 
 library(readr)
 
-mutation <- read_csv("~/DeepDRv1/data/mutation.csv")
-A<-data.matrix(mutation[,-1])
-rownames(A)<-mutation$X1
-cell_tst[[1]]<-A
+mutation <- read_csv("~/DeepDRv1/data/mutation.csv");A<-data.matrix(mutation[,-1]);rownames(A)<-mutation$X1;cell_tst[[1]]<-A
 
-CN <- read_csv("~/DeepDRv1/data/CN.csv")
-A<-data.matrix(CN[,-1])
-rownames(A)<- CN$X1
-cell_tst[[2]]<-A
+CN <- read_csv("~/DeepDRv1/data/CN.csv");A<-data.matrix(CN[,-1]);rownames(A)<- CN$X1;cell_tst[[2]]<-A
 
-Methy <- read_csv("~/DeepDRv1/data/Methy.csv")
-A<-data.matrix(Methy[,-1])
-rownames(A)<- Methy$X1
-cell_tst[[3]]<-A
+Methy <- read_csv("~/DeepDRv1/data/Methy.csv");A<-data.matrix(Methy[,-1]);rownames(A)<- Methy$X1;cell_tst[[3]]<-A
 
-Exp <- read_csv("~/DeepDRv1/data/Exp.csv")
-A<-data.matrix(Exp[,-1])
-rownames(A)<- Exp$X1
-cell_tst[[4]]<-A
+Exp <- read_csv("~/DeepDRv1/data/Exp.csv");A<-data.matrix(Exp[,-1]);rownames(A)<- Exp$X1;cell_tst[[4]]<-A
 
 drug_tst<-list()
 
-chem <- read_csv("~/DeepDRv1/data/chem.csv")
-A<-data.matrix(chem[,-1])
-rownames(A)<- chem$X1
-drug_tst[[1]]<-A
+chem <- read_csv("~/DeepDRv1/data/chem.csv");A<-data.matrix(chem[,-1]);rownames(A)<- chem$X1;drug_tst[[1]]<-A
 
-DT <- read_csv("~/DeepDRv1/data/DT.csv")
-A<-data.matrix(DT[,-1])
-rownames(A)<- DT$X1
-drug_tst[[2]]<-A
+DT <- read_csv("~/DeepDRv1/data/DT.csv");A<-data.matrix(DT[,-1]);rownames(A)<- DT$X1;drug_tst[[2]]<-A
 
 source('~/DeepDRv1/DeepDRpredictor.R')
+
 predictions<-DeepDRpredictor(cell_tst,drug_tst)
 
 
@@ -124,28 +107,22 @@ cell_tst<-list()
 
 library(readr)
 
-CN <- read_csv("~/DeepDRv1/data/CN.csv")
-A<-data.matrix(CN[,-1])
-rownames(A)<- CN$X1
-cell_tst[[2]]<-A
+CN <- read_csv("~/DeepDRv1/data/CN.csv");A<-data.matrix(CN[,-1]);rownames(A)<- CN$X1;cell_tst[[2]]<-A
 
-Exp <- read_csv("~/DeepDRv1/data/Exp.csv")
-A<-data.matrix(Exp[,-1])
-rownames(A)<- Exp$X1
-cell_tst[[4]]<-A
+Exp <- read_csv("~/DeepDRv1/data/Exp.csv");A<-data.matrix(Exp[,-1]);rownames(A)<- Exp$X1;cell_tst[[4]]<-A
 
 drug_tst<-list()
 
-chem <- read_csv("~/DeepDRv1/data/chem.csv")
-A<-data.matrix(chem[,-1])
-rownames(A)<- chem$X1
-drug_tst[[1]]<-A
+chem <- read_csv("~/DeepDRv1/data/chem.csv");A<-data.matrix(chem[,-1]);rownames(A)<- chem$X1;drug_tst[[1]]<-A
+
 drug_tst[[2]]<-matrix()
 
 missCtype=c(1,3)
+
 missDtype=2
 
 source('~/DeepDRv1/DeepDRpredictor.e.R')
+
 predictions<-DeepDRpredictor.e(cell_tst,drug_tst,missCtype,missDtype)
 
 

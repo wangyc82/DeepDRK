@@ -1,5 +1,5 @@
-# DeepDR
-**Deep** learning **D**rug **R**esponses.
+# DeepDRK
+**Deep** learning of **D**rug **R**esponse using **k**ernel-based data integration.
 
 # Status
 
@@ -7,28 +7,62 @@ Active development
 
 # Introduction
 
-Accurately predicting the response of a cancer patient to a therapeutic agent is core goal of precision oncology. Among various obstacles hindering clinical translation, the lack of effective multimodal and multi-source data integration methods has become a bottleneck. DeepDR provides a systematic way to predict drug response from different resources, diverse cancer types, and various chemical compounds, based on kernel-based integration of multi-source data from genomics,
-transcriptomics, epigenomics, and chemical properties and previously reported target proteins of compounds.
+Early prediction of therapeutic response of cancer patients is a critical step in precision oncology. Among various obstacles hindering clinical translation, lacking effective methods for multimodal and multi-source data integration has become a bottleneck. DeepDRK provides a systematic way to predict drug response of personalized cancer cells via kernel-based data integration of pharmacogenomics, transcriptomics, epigenomics, chemical properties, and previously reported protein-compound interaction collected from different resources.
 
 # Usage
 
 1. Installation
 
-Before installing DeepDR please make sure you have installed R, and Rscript is available in your system path ($PATH).
+Prerequisites: (1) R is properly installed; (2) Rscript is available in your system path ($PATH); (3) git (2.21.1)
 
-git clone https://github.com/wangyc82/DeepDRv1
+Installation: git clone https://github.com/wangyc82/DeepDRv1
 
-2. Preparing the input files
+If the data (combination-data.RData) is incomplete, download it by clicking this file.
 
-The input files includes the omics profiles for cancer cells, including mutation at gene level, copy number at gene level, DNA methylation at gene level, and gene expression, and the drug properties, including chemical properties generated from chemical structures, and previously reported target proteins.
+Dependencies: 
+R;
+Readr1.3.1 and all its dependencies;
+h2o package (h2o_3.32.0.1.tgz) and its dependencies; 
+Oracle JDK (Java SE Development Kit 11.0.9).
 
-All these omics profiles must represent the same set of cancer cells, and they are prepared into R list format, such as cell_tst in example.data.
+Testing of successful installation by running the following in R
 
-The chemical properties are the molecular properties based on checmical structures, and the target proteins have to be represented by a binary vector to indicate whether the given protein is annotated as the drug target.
+library(readr)
+library(h2o)
+h2o.init()
 
-Both chemical properties and target profile must represent the same set of drugs, and have to be prepared into R list format, such as drug_tst in example.data.
+and get something like the following
 
-example.data.RData is an example input file demonstrating the format of the input data. combination-data.RData contains all data for training DeepDR model.
+
+
+
+
+2. Preparation of the input files
+
+Six csv files are needed to represent the multi-omic profile of cancer cells, i.e., single nucleotide variant and small INDELs (mutation.csv), copy number alteration (CN.csv), DNA methylation (Methy.csv), gene expression (Exp.csv), compound chemical properties (chem.csv), and known drug targets (DT.csv). 
+
+
+The input file representing the genomic mutations of the cancer cells is a data matrix. The rows of the matrix are cancer cells, the columns are genes, and the elements of the matrix are variables of 0 or 1. 1 means the target gene is mutated in the cell, and 0 means no mutation in the cell. The number of column is the number of genes, and they are separated by tab delimiter.
+ 
+mutation.csv
+
+
+
+The input file representing the copy number alterations, the status of DNA methylation, and the gene expression of the cancer cells are data matrices (CN.csv, methylation.csv, expression.csv). The rows of these matrices are cancer cells, the columns are genes, and the elements of the matrices are variables of float, integer, and float, respectively, representing the copy number, methylation, and expression of gene in the cell. The number of column of these matrices are the number of genes, and columns are separated by tab delimiter.
+
+
+
+The input file representing the chemical properties of the cancer drugs is a data matrix (chem.csv). The rows of the matrix are cancer drugs, the columns are chemical properties, and the elements of the matrix are variables of float. The number of column is the number of chemical properties, and the columns are separated by tab delimiter. To get chemical properties of cancer drugs, the chemical structure sdf file has to be prepared in advance, and upload it into “StarVue” (StarVue-macinstall-1.4.dmg) software to get the chemical molecular descriptors (QuaSAR-Descriptor in the Molecular Operating Environment (MOE)).
+
+chem.csv
+
+
+The input file representing the known target proteins of the cancer drugs is a data matrix (DT.csv). The rows of the matrix are cancer drugs, the columns are target proteins, and the elements of the matrix are variables of 0 or 1. 1 means the target protein is a binding protein for a given drug, and 0 means not binding. The number of column is the number of proteins, and the columns are separated by tab delimiter.
+
+DT.csv
+
+
+The example input files can be found in Github repository data folder.
 
 3. Running DeepDR
 
@@ -36,20 +70,85 @@ The main function of DeepDR is DeepDRpredictor.R. Get your input files prepared,
 
 Usage example:
 
-predictions<-DeepDRpredictor(cell_tst,drug_tst) 
+# loading the input files:
 
-The output describes the probability that the test cell is sensitive to the test drug.
+cell_tst<-list()
 
-# Dependencies
+library(readr)
 
-The model is trained by using h2o package in R. The dependency requirements are automatically solved while running the program.
+mutation <- read_csv("~/DeepDRv1/data/mutation.csv")
+A<-data.matrix(mutation[,-1])
+rownames(A)<-mutation$X1
+cell_tst[[1]]<-A
+
+CN <- read_csv("~/DeepDRv1/data/CN.csv")
+A<-data.matrix(CN[,-1])
+rownames(A)<- CN$X1
+cell_tst[[2]]<-A
+
+Methy <- read_csv("~/DeepDRv1/data/Methy.csv")
+A<-data.matrix(Methy[,-1])
+rownames(A)<- Methy$X1
+cell_tst[[3]]<-A
+
+Exp <- read_csv("~/DeepDRv1/data/Exp.csv")
+A<-data.matrix(Exp[,-1])
+rownames(A)<- Exp$X1
+cell_tst[[4]]<-A
+
+drug_tst<-list()
+
+chem <- read_csv("~/DeepDRv1/data/chem.csv")
+A<-data.matrix(chem[,-1])
+rownames(A)<- chem$X1
+drug_tst[[1]]<-A
+
+DT <- read_csv("~/DeepDRv1/data/DT.csv")
+A<-data.matrix(DT[,-1])
+rownames(A)<- DT$X1
+drug_tst[[2]]<-A
+
+source('~/DeepDRv1/DeepDRpredictor.R')
+predictions<-DeepDRpredictor(cell_tst,drug_tst)
+
+
+
+The true relationships between test cells and drugs are
+
+
+The predictors for the extender DeepDRK model dealing with the missing features (DeepDRpredictor.e) was also included. Here is the example showing how to use it:
+
+suppose the mutation, methylation and target proteins are missing
+
+cell_tst<-list()
+
+library(readr)
+
+CN <- read_csv("~/DeepDRv1/data/CN.csv")
+A<-data.matrix(CN[,-1])
+rownames(A)<- CN$X1
+cell_tst[[2]]<-A
+
+Exp <- read_csv("~/DeepDRv1/data/Exp.csv")
+A<-data.matrix(Exp[,-1])
+rownames(A)<- Exp$X1
+cell_tst[[4]]<-A
+
+drug_tst<-list()
+
+chem <- read_csv("~/DeepDRv1/data/chem.csv")
+A<-data.matrix(chem[,-1])
+rownames(A)<- chem$X1
+drug_tst[[1]]<-A
+drug_tst[[2]]<-matrix()
+
+missCtype=c(1,3)
+missDtype=2
+
+source('~/DeepDRv1/DeepDRpredictor.e.R')
+predictions<-DeepDRpredictor.e(cell_tst,drug_tst,missCtype,missDtype)
+
 
 # Contact
 
-For technical issues please send an email to ycwang@nwipb.cas.cn or jgwang@ust.hk.
-
-
-
-
-
-
+For technical issues please send an email to ycwang@nwipb.cas.cn.

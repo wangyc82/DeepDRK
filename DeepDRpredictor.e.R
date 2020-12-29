@@ -1,10 +1,10 @@
 # this procedure is for prediction of the relationship between cancer cells/patients and anti-cancer drugs
 # it could be applied on some of mutation, copy number variation, gene expression profiles for cell/patients, and drug chemical properties and target proteins
-# the missCtype is a integer indicating the missing cancer features, the order of various features are 1(mutation), 2(copy number), 3(methylation), 4(expression). For example, if it is c(1,3), meaning mutation and methylation are missing.
-# the missCtype is a integer indicating the missing drug features, 1(chemical properties), 2(target protein)
+# the missCtype is an integer indicating the missing cancer features, 1(mutation), 2(copy number), 3(methylation), 4(expression). For example, if it is c(1,3), meaning mutation and methylation are missing.
+# the missCtype is an integer indicating the missing drug features, 1(chemical properties), 2(target protein). For example, if it is 2, meaning target protein is missing.
 # this procedure is only for missing some of cancer omics or missing some of drug features
-# cell_tst is a list with length 4, and set the missing feature are matrix()
-# drug_tst is a list with length 2, and set the missing feature are matrix()
+# cell_tst is a list with length 4, and set the missing feature as null matrix. For example, if mutation is missing, cell_tst[[1]]<-matrix()
+# drug_tst is a list with length 2, and set the missing feature as null matrix. . For example, if target protein is missing, drug_tst[[2]]<-matrix()
 DeepDRpredictor.e<-function(cell_tst,drug_tst,missCtype,missDtype)
 {
   load("~/DeepDRv1/combination-data.RData")

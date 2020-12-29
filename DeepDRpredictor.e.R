@@ -7,7 +7,7 @@
 # drug_tst is a list with length 2, and set the missing feature are matrix()
 DeepDRpredictor.e<-function(cell_tst,drug_tst,missCtype,missDtype)
 {
-  #load("~/DeepDRv1/combination-data.RData")
+  load("~/DeepDRv1/combination-data.RData")
   
   #preparing the inputs for input for deep learning method
   sim_cell_ls<-list()

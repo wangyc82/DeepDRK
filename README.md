@@ -31,14 +31,6 @@ Oracle JDK (Java SE Development Kit 11.0.9).
 
 Testing of successful installation by running the following in R
 
-library(readr)
-
-library(h2o)
-
-h2o.init()
-
-and get something like the following
-
 ![DeepDRKgithub1](https://user-images.githubusercontent.com/36029032/103272576-341d8900-49f8-11eb-9164-99cf3174aa95.png)
 
 

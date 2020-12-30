@@ -5,9 +5,9 @@
 # the drug data is deposited as a list in drug_tst containg chemical properties, and target proteins for common drugs
 DeepDRpredictor<-function(cell_tst,drug_tst)
 {
-  load("~/DeepDRv1/combination-data.RData")
+  # load("~/DeepDRv1/combination-data.RData")
   
-  #preparing the inputs for input for deep learning method
+  # prepare the inputs for deep learning method
   sim_cell<-cbind(sim_mut,sim_CN,sim_methy,sim_exp)
   sim_drug<-cbind(sim_comp,sim_DT)
   
@@ -22,8 +22,8 @@ DeepDRpredictor<-function(cell_tst,drug_tst)
   h2o.init()
   cat("convert training data \n")
   train.hex <- as.h2o(data_trn)
-  #prepare for testing
-  #make sure they have same cells and drugs
+  
+  #prepare the test data
   
   cell_trs_mut<-cell_tst[[1]]
   cell_trs_CN<-cell_tst[[2]]
@@ -58,7 +58,7 @@ DeepDRpredictor<-function(cell_tst,drug_tst)
   model_prediction<-h2o.predict(model, test.hex)
   prob_test<-as.data.frame(model_prediction)[,1]
   S<-data.frame(cell=rownames(cell_trs_exp)[Ast[,1]],drug=rownames(drug_tst_DT)[Ast[,2]],prob=prob_test)
-  h2o.shutdown()
   return(S)
+  h2o.shutdown()
 }
   

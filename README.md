@@ -15,7 +15,7 @@ Early prediction of therapeutic response of cancer patients is a critical step i
 
 Prerequisites: (1) R is properly installed; (2) Rscript is available in your system path ($PATH); (3) git (2.21.1)
 
-Installation: git clone https://github.com/wangyc82/DeepDRv1
+Installation: git clone https://github.com/wangyc82/DeepDRK
 
 If the data (combination-data.RData) is incomplete, download it by clicking this file.
 

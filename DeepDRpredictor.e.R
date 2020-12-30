@@ -7,9 +7,9 @@
 # drug_tst is a list with length 2, and set the missing feature as null matrix. . For example, if target protein is missing, drug_tst[[2]]<-matrix()
 DeepDRpredictor.e<-function(cell_tst,drug_tst,missCtype,missDtype)
 {
-  load("~/DeepDRv1/combination-data.RData")
+  #load("~/DeepDRv1/combination-data.RData")
   
-  #preparing the inputs for input for deep learning method
+  #preparethe inputs for deep learning method
   sim_cell_ls<-list()
   sim_cell_ls[[1]]<-sim_mut
   sim_cell_ls[[2]]<-sim_CN
@@ -36,7 +36,7 @@ DeepDRpredictor.e<-function(cell_tst,drug_tst,missCtype,missDtype)
   cat("convert training data \n")
   train.hex <- as.h2o(data_trn)
   
-  #prepare for testing
+  #prepare the test data
   cell_trs_mut<-cell_tst[[1]]
   cell_trs_CN<-cell_tst[[2]]
   cell_trs_methy<-cell_tst[[3]]
@@ -86,7 +86,7 @@ DeepDRpredictor.e<-function(cell_tst,drug_tst,missCtype,missDtype)
   model_prediction<-h2o.predict(model, test.hex)
   prob_test<-as.data.frame(model_prediction)[,1]
   S<-data.frame(cell=test_cell[Ast[,1]],drug=test_drug[Ast[,2]],prob=prob_test)
-  h2o.shutdown()
   return(S)
+  h2o.shutdown()
 }
 

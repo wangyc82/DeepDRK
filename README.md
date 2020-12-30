@@ -35,7 +35,7 @@ Testing of successful installation by running the following in R
 
 2. Download the RData for training the model
 
-Go to https://wanglab.shinyapps.io/DeepDRK/ to get the RData for training, and put it in the same directory with the DeepDRK software.
+Go to https://wanglab.shinyapps.io/DeepDRK/, to get the RData for training, and put it in the same directory with the DeepDRK software.
 
 3. Preparation of the input files
 
@@ -83,9 +83,9 @@ mutation <- read_csv("~/DeepDRv1/data/mutation.csv");A<-data.matrix(mutation[,-1
 
 CN <- read_csv("~/DeepDRv1/data/CN.csv");A<-data.matrix(CN[,-1]);rownames(A)<- CN$X1;cell_tst[[2]]<-A
 
-Methy <- read_csv("~/DeepDRv1/data/Methy.csv");A<-data.matrix(Methy[,-1]);rownames(A)<- Methy$X1;cell_tst[[3]]<-A
+Methy <- read_csv("~/DeepDRv1/data/methylation.csv");A<-data.matrix(Methy[,-1]);rownames(A)<- Methy$X1;cell_tst[[3]]<-A
 
-Exp <- read_csv("~/DeepDRv1/data/Exp.csv");A<-data.matrix(Exp[,-1]);rownames(A)<- Exp$X1;cell_tst[[4]]<-A
+Exp <- read_csv("~/DeepDRv1/data/expression.csv");A<-data.matrix(Exp[,-1]);rownames(A)<- Exp$X1;cell_tst[[4]]<-A
 
 drug_tst<-list()
 
@@ -93,7 +93,7 @@ chem <- read_csv("~/DeepDRv1/data/chem.csv");A<-data.matrix(chem[,-1]);rownames(
 
 DT <- read_csv("~/DeepDRv1/data/DT.csv");A<-data.matrix(DT[,-1]);rownames(A)<- DT$X1;drug_tst[[2]]<-A
 
-load("~/DeepDRv1/combination-data.RData") #load the training RData
+load("~/DeepDRv1/combination_data.RData") #load the training RData
 
 source('~/DeepDRv1/DeepDRpredictor.R')
 
@@ -120,7 +120,7 @@ library(readr)
 
 CN <- read_csv("~/DeepDRv1/data/CN.csv");A<-data.matrix(CN[,-1]);rownames(A)<- CN$X1;cell_tst[[2]]<-A
 
-Exp <- read_csv("~/DeepDRv1/data/Exp.csv");A<-data.matrix(Exp[,-1]);rownames(A)<- Exp$X1;cell_tst[[4]]<-A
+Exp <- read_csv("~/DeepDRv1/data/expression.csv");A<-data.matrix(Exp[,-1]);rownames(A)<- Exp$X1;cell_tst[[4]]<-A
 
 drug_tst<-list()
 
@@ -132,7 +132,7 @@ missCtype=c(1,3)
 
 missDtype=2
 
-load("~/DeepDRv1/combination-data.RData") #load the training RData
+load("~/DeepDRv1/combination_data.RData") #load the training RData
 
 source('~/DeepDRv1/DeepDRpredictor.e.R')
 

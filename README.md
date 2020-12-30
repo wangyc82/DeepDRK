@@ -33,12 +33,13 @@ Testing of successful installation by running the following in R
 
 ![DeepDRKgithub1](https://user-images.githubusercontent.com/36029032/103272576-341d8900-49f8-11eb-9164-99cf3174aa95.png)
 
+2. Download the RData for training the model
 
+Go to https://wanglab.shinyapps.io/DeepDRK/ to get the RData for training, and put it in the same directory with the DeepDRK software.
 
-2. Preparation of the input files
+3. Preparation of the input files
 
 Six csv files are needed to represent the multi-omic profile of cancer cells, i.e., single nucleotide variant and small INDELs (mutation.csv), copy number alteration (CN.csv), DNA methylation (Methy.csv), gene expression (Exp.csv), compound chemical properties (chem.csv), and known drug targets (DT.csv). 
-
 
 The input file representing the genomic mutations of the cancer cells is a data matrix. The rows of the matrix are cancer cells, the columns are genes, and the elements of the matrix are variables of 0 or 1. 1 means the target gene is mutated in the cell, and 0 means no mutation in the cell. The number of column is the number of genes, and they are separated by tab delimiter.
  
@@ -66,9 +67,9 @@ DT.csv
 
 The example input files can be found in Github repository data folder.
 
-3. Running DeepDR
+4. Running DeepDRK
 
-The main function of DeepDR is DeepDRpredictor.R. Get your input files prepared, and run it like this:
+The main function of DeepDRK is DeepDRpredictor.R. Get your input files ready, and run it like this:
 
 Usage example:
 
@@ -92,6 +93,8 @@ chem <- read_csv("~/DeepDRv1/data/chem.csv");A<-data.matrix(chem[,-1]);rownames(
 
 DT <- read_csv("~/DeepDRv1/data/DT.csv");A<-data.matrix(DT[,-1]);rownames(A)<- DT$X1;drug_tst[[2]]<-A
 
+load("~/DeepDRv1/combination-data.RData") #load the training RData
+
 source('~/DeepDRv1/DeepDRpredictor.R')
 
 predictions<-DeepDRpredictor(cell_tst,drug_tst)
@@ -101,6 +104,10 @@ predictions<-DeepDRpredictor(cell_tst,drug_tst)
 The true relationships between test cells and drugs are
 
 <img width="324" alt="Screenshot 2563-12-29 at 11 52 23 AM" src="https://user-images.githubusercontent.com/36029032/103273169-9fb42600-49f9-11eb-98d5-1fbccb7a7097.png">
+
+h2o.shutdown() # shut down the h2o
+
+<img width="988" alt="Screenshot 2563-12-30 at 5 36 48 PM" src="https://user-images.githubusercontent.com/36029032/103342946-c5a6fc80-4ac5-11eb-83fc-725e53b3af59.png">
 
 
 The predictors for the extender DeepDRK model dealing with the missing features (DeepDRpredictor.e) was also included. Here is the example showing how to use it:
@@ -125,11 +132,17 @@ missCtype=c(1,3)
 
 missDtype=2
 
+load("~/DeepDRv1/combination-data.RData") #load the training RData
+
 source('~/DeepDRv1/DeepDRpredictor.e.R')
 
 predictions<-DeepDRpredictor.e(cell_tst,drug_tst,missCtype,missDtype)
 
 <img width="346" alt="Screenshot 2563-12-29 at 4 51 48 PM" src="https://user-images.githubusercontent.com/36029032/103273243-cbcfa700-49f9-11eb-9b86-79c91c8c6ff1.png">
+
+h2o.shutdown() # shut down the h2o
+
+<img width="988" alt="Screenshot 2563-12-30 at 5 36 48 PM" src="https://user-images.githubusercontent.com/36029032/103342946-c5a6fc80-4ac5-11eb-83fc-725e53b3af59.png">
 
 # Contact
 

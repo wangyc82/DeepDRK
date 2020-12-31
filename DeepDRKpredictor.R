@@ -42,7 +42,7 @@
 # rownames(A)<- DT$X1
 # drug_tst[[2]]<-A
 
-# source('~/DeepDRv1/DeepDRKpredictor.R')
+# source('~/DeepDRK/DeepDRKpredictor.R')
 # predictions<-DeepDRKpredictor(cell_tst,drug_tst)
 DeepDRKpredictor<-function(cell_tst,drug_tst)
 {

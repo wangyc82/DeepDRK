@@ -3,7 +3,7 @@
 # drug chemical properties are generated through QuaSAR-Descriptor in the Molecular Operating Environment (MOE) based on drug's chemical structure
 # the cell/patient data is deposited as a list in cell_tst containg mutation, copy number variation, DNA methylation, and gene expression profiles for common cells/patients
 # the drug data is deposited as a list in drug_tst containg chemical properties, and target proteins for common drugs
-DeepDRpredictor<-function(cell_tst,drug_tst)
+DeepDRKpredictor<-function(cell_tst,drug_tst)
 {
   # load("~/DeepDRv1/combination-data.RData")
   

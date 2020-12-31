@@ -131,7 +131,7 @@ predictions<-DeepDRKpredictor(cell_tst,drug_tst)
 
 As shown in the following figure of the experimental data, we observed that cell lines 697 and A3-KAW tend to be sensitive to Imatinib and these two cell lines were prune to be resistant to Gemcitabine, consistent with the prediction from DeepDRK. 
 
-![example-test-AUCDR](https://user-images.githubusercontent.com/36029032/103392978-4bc15280-4b5b-11eb-98f3-5204229e58ca.png)
+![example-test-AUCDR](https://user-images.githubusercontent.com/36029032/103406015-1dac3480-4b94-11eb-8981-31293cd1d231.png)
 
 h2o.shutdown() # shut down the h2o
 

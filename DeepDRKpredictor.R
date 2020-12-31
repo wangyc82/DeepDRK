@@ -1,11 +1,52 @@
-# this procedure is for prediction of the relationship between cancer cells/patients and anti-cancer drugs
-# it could be applied on mutation, copy number variation, DNA methylation, gene expression profiles for cell/patients, and drug chemical properties and target proteins
-# drug chemical properties are generated through QuaSAR-Descriptor in the Molecular Operating Environment (MOE) based on drug's chemical structure
-# the cell/patient data is deposited as a list in cell_tst containg mutation, copy number variation, DNA methylation, and gene expression profiles for common cells/patients
-# the drug data is deposited as a list in drug_tst containg chemical properties, and target proteins for common drugs
+# This program is to predict potential drug response of a cancer cell line (cancer patient)
+# It requires the following input to characterize a cancer cell line: 
+# 1. Gene mutation (mutation.csv);
+# 2. Copy number variation (CN.csv);
+# 3.  DNA methylation (Methy.csv);
+# 4. Gene expression profile (Exp.csv);
+# Meanwhile, it requires the following input to characterize a drug: 
+# 5. Drug chemical properties, generated through QuaSAR-Descriptor in the Molecular Operating Environment (MOE) based on drug's chemical structure (chem.csv); 
+# 6. Known drug targets (DT.csv).
+# 
+# Example to run:
+# cell_tst<-list()
+# library(readr)
+# mutation <- read_csv("~/DeepDRK/data/mutation.csv")
+# A<-data.matrix(mutation[,-1])
+# rownames(A)<-mutation$X1
+# cell_tst[[1]]<-A
+
+# CN <- read_csv("~/DeepDRK/data/CN.csv")
+# A<-data.matrix(CN[,-1])
+# rownames(A)<- CN$X1
+# cell_tst[[2]]<-A
+
+# Methy <- read_csv("~/DeepDRK/data/Methy.csv")
+# A<-data.matrix(Methy[,-1])
+# rownames(A)<- Methy$X1
+# cell_tst[[3]]<-A
+
+# Exp <- read_csv("~/DeepDRK/data/Exp.csv")
+# A<-data.matrix(Exp[,-1])
+# rownames(A)<- Exp$X1
+# cell_tst[[4]]<-A
+
+# drug_tst<-list()
+# chem <- read_csv("~/DeepDRK/data/chem.csv")
+# A<-data.matrix(chem[,-1])
+# rownames(A)<- chem$X1
+# drug_tst[[1]]<-A
+
+# DT <- read_csv("~/DeepDRK/data/DT.csv")
+# A<-data.matrix(DT[,-1])
+# rownames(A)<- DT$X1
+# drug_tst[[2]]<-A
+
+# source('~/DeepDRv1/DeepDRKpredictor.R')
+# predictions<-DeepDRKpredictor(cell_tst,drug_tst)
 DeepDRKpredictor<-function(cell_tst,drug_tst)
 {
-  # load("~/DeepDRv1/combination-data.RData")
+  #load("~/DeepDRK/combination-data.RData")
   
   # prepare the inputs for deep learning method
   sim_cell<-cbind(sim_mut,sim_CN,sim_methy,sim_exp)

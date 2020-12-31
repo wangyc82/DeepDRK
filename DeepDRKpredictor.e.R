@@ -5,7 +5,7 @@
 # this procedure is only for missing some of cancer omics or missing some of drug features
 # cell_tst is a list with length 4, and set the missing feature as null matrix. For example, if mutation is missing, cell_tst[[1]]<-matrix()
 # drug_tst is a list with length 2, and set the missing feature as null matrix. . For example, if target protein is missing, drug_tst[[2]]<-matrix()
-DeepDRpredictor.e<-function(cell_tst,drug_tst,missCtype,missDtype)
+DeepDRKpredictor.e<-function(cell_tst,drug_tst,missCtype,missDtype)
 {
   #load("~/DeepDRv1/combination-data.RData")
   

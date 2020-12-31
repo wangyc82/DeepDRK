@@ -42,9 +42,9 @@ Testing of successful installation by running the following commands in R:
 
 2. Preparation of the input files
 
-In total, six csv files are needed to represent the multi-omic profile of cancer cells, i.e., single nucleotide variant and small INDELs (mutation.csv), copy number alteration (CN.csv), DNA methylation (Methy.csv), gene expression (Exp.csv), compound chemical properties (chem.csv), and known drug targets (DT.csv). 
+In total, six csv files are needed to represent the multi-omic profile of cancer cells, i.e., single nucleotide variant and small INDELs (mutation.csv), copy number alteration (CN.csv), DNA methylation (methylation.csv), gene expression (expression.csv), compound chemical properties (chem.csv), and known drug targets (DT.csv). 
 
-The input file mutation.csv that includes genomic mutations in cancer cells is a data matrix, with each row representing a cancer cell line and each column representing the genotype of a gene. The value of this matrix is binary, with 1 indicating mutated while 0 wild type.
+The input file mutation.csv that includes genomic mutations in cancer cells is a data matrix, with each row representing a cancer cell line and each column representing the genotype of a gene. The value of this matrix is binary, with 1 indicating mutated while 0 for wild type.
  
 mutation.csv
 
@@ -60,32 +60,40 @@ Similarly, the input files that contain the copy number alteration data (CN.csv)
 
 expression.csv
 
-           A1BG   A1CF    A2M …
- 201T     3.162   2.919   3.379
- 22RV1    3.531   6.336   5.331
- 42-MG-BA 6.002   3.137   3.237
-   .
-   .
-   .
+               A1BG   A1CF    A2M …
+    201T      3.162   2.919   3.379
+    22RV1     3.531   6.336   5.331
+    42-MG-BA  6.002   3.137   3.237
+      .
+      .
+      .
 
 The input file chem.csv that describes the chemical properties of the cancer drugs is a matrix with each row representing one cancer drug and each column representing one feature to describe drug’s chemical properties. The descriptors of the chemical properties of a cancer drug were inferred from its chemical structure. Particularly, to describe a drug, such as Erlotinib, we will need to first download the sdf file of this drug from PubChem, and then upload the chemical structure into “StarVue” (StarVue-macinstall-1.4.dmg) software to extract the 2D Molecular Operating Environment (MOE)) descriptors, including physical properties, atom counts, and bond counts.
 
 chem.csv
 
-           PUBCHEM_MOLECULAR_WEIGHT   PUBCHEM_EXACT_MASS    PUBCHEM_CACTVS_TPSA …
- Erlotinib   393.4   2.919   3.379
- Rapamycin   917.2   6.336   5.331
- Sunitinib   398.5   3.137   3.237
-   .
-   .
-   .
+              PUBCHEM_MOLECULAR_WEIGHT   PUBCHEM_EXACT_MASS    PUBCHEM_CACTVS_TPSA …
+    Erlotinib            393.4                   393.2                  74.4
+    Rapamycin            917.2                   913.6                  195.0
+    Sunitinib            398.5                   398.2                  77.2
+       .
+       .
+       .
 
 
 The input file DT.csv includes the known targeting proteins of the cancer drugs. Each row represents one cancer drug, and each column represents a target protein. “1” indicates a potential drug-gene interaction reported in DrugBank or KEGG.
 
 DT.csv
 
-<img width="432" alt="Screenshot 2563-12-29 at 5 09 13 PM" src="https://user-images.githubusercontent.com/36029032/103273223-b6f31380-49f9-11eb-8b91-70fa23e340fd.png">
+                         EGFR                     KIT                   PDGRA …
+    Erlotinib            393.4                   393.2                  74.4
+    Rapamycin            917.2                   913.6                  195.0
+    Sunitinib            398.5                   398.2                  77.2
+       .
+       .
+       .
+
+
 
 The example of all input files can be found in the “data” folder of the Github repository.
 

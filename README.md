@@ -1,6 +1,5 @@
 ![logo](https://user-images.githubusercontent.com/36029032/103392146-6f829980-4b57-11eb-95e8-965154badc1b.png)
 
-# DeepDRK
 **Deep** learning of **D**rug **R**esponse using **k**ernel-based data integration.
 
 # Status
@@ -77,8 +76,6 @@ The main function of DeepDRK is DeepDRKpredictor.R. Get your input files prepare
 
 Usage example:
 
-# loading the input files:
-
 cell_tst<-list()
 
 library(readr)
@@ -123,7 +120,7 @@ library(readr)
 
 CN <- read_csv("~/DeepDRK/data/CN.csv");A<-data.matrix(CN[,-1]);rownames(A)<- CN$X1;cell_tst[[2]]<-A
 
-Exp <- read_csv("~/DeepDRv1/data/expression.csv");A<-data.matrix(Exp[,-1]);rownames(A)<- Exp$X1;cell_tst[[4]]<-A
+Exp <- read_csv("~/DeepDRK/data/expression.csv");A<-data.matrix(Exp[,-1]);rownames(A)<- Exp$X1;cell_tst[[4]]<-A
 
 drug_tst<-list()
 

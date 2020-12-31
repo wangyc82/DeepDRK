@@ -48,13 +48,13 @@ The input file mutation.csv that includes genomic mutations in cancer cells is a
  
 mutation.csv
 
-           A1BG A1CF  A2M …
- 201T       0     0    0
- 22RV1      0     1    0
- 42-MG-BA   0     0    1
-   .
-   .
-   .
+              A1BG A1CF  A2M …
+    201T       0     0    0
+    22RV1      0     1    0
+    42-MG-BA   0     0    1
+      .
+      .
+      .
 
 Similarly, the input files that contain the copy number alteration data (CN.csv), the status of DNA methylation (methylation.csv), and the gene expression of the cancer cells (expression.csv) are also data matrices with a row representing a cancer cell line and a column representing a gene. The elements of these matrices are respectively integers for gene copy numbers, and float numbers for level of gene methylation and expression.
 

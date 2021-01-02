@@ -1,4 +1,4 @@
-![logo](https://user-images.githubusercontent.com/36029032/103404426-711b8400-4b8e-11eb-88b7-d6117bac52fe.png)
+![logo](https://user-images.githubusercontent.com/36029032/103455596-7cef7d80-4d29-11eb-91c8-f48815924b88.png)
 
 **Deep** learning of **D**rug **R**esponse using **k**ernel-based data integration.
 
@@ -103,29 +103,18 @@ The main function of DeepDRK is DeepDRKpredictor.R. Get your input files prepare
 
 Usage example:
 
-cell_tst<-list()
-
-library(readr)
-
-mutation <- read_csv("~/DeepDRK/data/mutation.csv");A<-data.matrix(mutation[,-1]);rownames(A)<-mutation$X1;cell_tst[[1]]<-A
-
-CN <- read_csv("~/DeepDRK/data/CN.csv");A<-data.matrix(CN[,-1]);rownames(A)<- CN$X1;cell_tst[[2]]<-A
-
-Methy <- read_csv("~/DeepDRK/data/methylation.csv");A<-data.matrix(Methy[,-1]);rownames(A)<- Methy$X1;cell_tst[[3]]<-A
-
-Exp <- read_csv("~/DeepDRK/data/expression.csv");A<-data.matrix(Exp[,-1]);rownames(A)<- Exp$X1;cell_tst[[4]]<-A
-
-drug_tst<-list()
-
-chem <- read_csv("~/DeepDRK/data/chem.csv");A<-data.matrix(chem[,-1]);rownames(A)<- chem$X1;drug_tst[[1]]<-A
-
-DT <- read_csv("~/DeepDRK/data/DT.csv");A<-data.matrix(DT[,-1]);rownames(A)<- DT$X1;drug_tst[[2]]<-A
-
-load("~/DeepDRK/combination_data.RData") #load the training RData
-
-source('~/DeepDRK/DeepDRKpredictor.R')
-
-predictions<-DeepDRKpredictor(cell_tst,drug_tst)
+    > cell_tst<-list()
+    > library(readr)
+    > mutation <- read_csv("~/DeepDRK/data/mutation.csv");A<-data.matrix(mutation[,-1]);rownames(A)<-mutation$X1;cell_tst[[1]]<-A
+    > CN <- read_csv("~/DeepDRK/data/CN.csv");A<-data.matrix(CN[,-1]);rownames(A)<- CN$X1;cell_tst[[2]]<-A
+    > Methy <- read_csv("~/DeepDRK/data/methylation.csv");A<-data.matrix(Methy[,-1]);rownames(A)<- Methy$X1;cell_tst[[3]]<-A
+    > Exp <- read_csv("~/DeepDRK/data/expression.csv");A<-data.matrix(Exp[,-1]);rownames(A)<- Exp$X1;cell_tst[[4]]<-A
+    > drug_tst<-list()
+    > chem <- read_csv("~/DeepDRK/data/chem.csv");A<-data.matrix(chem[,-1]);rownames(A)<- chem$X1;drug_tst[[1]]<-A
+    > DT <- read_csv("~/DeepDRK/data/DT.csv");A<-data.matrix(DT[,-1]);rownames(A)<- DT$X1;drug_tst[[2]]<-A
+    > load("~/DeepDRK/combination_data.RData") #load the training RData
+    > source('~/DeepDRK/DeepDRKpredictor.R')
+    > predictions<-DeepDRKpredictor(cell_tst,drug_tst)
 
 <img width="348" alt="Screenshot 2563-12-29 at 11 49 02 AM" src="https://user-images.githubusercontent.com/36029032/103273130-8c08bf80-49f9-11eb-834a-d53cded05b17.png">
 
@@ -133,43 +122,33 @@ As shown in the following figure of the experimental data, we observed that cell
 
 ![example-test-AUCDR](https://user-images.githubusercontent.com/36029032/103406015-1dac3480-4b94-11eb-8981-31293cd1d231.png)
 
-h2o.shutdown() # shut down the h2o
-
-<img width="988" alt="Screenshot 2563-12-30 at 5 36 48 PM" src="https://user-images.githubusercontent.com/36029032/103342946-c5a6fc80-4ac5-11eb-83fc-725e53b3af59.png">
+    > h2o.shutdown() # shut down the h2o
+    Are you sure you want to shutdown the H2O instance running at http://localhost:54321/ (Y/N)? y
+    TRUE
 
 Moreover, DeepDRK could also handle task with missing features using the DeepDRKpredictor.e R function. Here is the example showing how to use it:
 
 In case the mutation, methylation and target proteins are missing
 
-cell_tst<-list()
-
-library(readr)
-
-CN <- read_csv("~/DeepDRK/data/CN.csv");A<-data.matrix(CN[,-1]);rownames(A)<- CN$X1;cell_tst[[2]]<-A
-
-Exp <- read_csv("~/DeepDRK/data/expression.csv");A<-data.matrix(Exp[,-1]);rownames(A)<- Exp$X1;cell_tst[[4]]<-A
-
-drug_tst<-list()
-
-chem <- read_csv("~/DeepDRK/data/chem.csv");A<-data.matrix(chem[,-1]);rownames(A)<- chem$X1;drug_tst[[1]]<-A
-
-drug_tst[[2]]<-matrix()
-
-missCtype=c(1,3)
-
-missDtype=2
-
-load("~/DeepDRK/combination_data.RData") #load the training RData
-
-source('~/DeepDRK/DeepDRKpredictor.e.R')
-
-predictions<-DeepDRKpredictor.e(cell_tst,drug_tst,missCtype,missDtype)
+    > cell_tst<-list()
+    > library(readr)
+    > CN <- read_csv("~/DeepDRK/data/CN.csv");A<-data.matrix(CN[,-1]);rownames(A)<- CN$X1;cell_tst[[2]]<-A
+    > Exp <- read_csv("~/DeepDRK/data/expression.csv");A<-data.matrix(Exp[,-1]);rownames(A)<- Exp$X1;cell_tst[[4]]<-A
+    > drug_tst<-list()
+    > chem <- read_csv("~/DeepDRK/data/chem.csv");A<-data.matrix(chem[,-1]);rownames(A)<- chem$X1;drug_tst[[1]]<-A
+    > drug_tst[[2]]<-matrix()
+    > missCtype=c(1,3)
+    > missDtype=2
+    > load("~/DeepDRK/combination_data.RData") #load the training RData
+    > source('~/DeepDRK/DeepDRKpredictor.e.R')
+    > predictions<-DeepDRKpredictor.e(cell_tst,drug_tst,missCtype,missDtype)
 
 <img width="346" alt="Screenshot 2563-12-29 at 4 51 48 PM" src="https://user-images.githubusercontent.com/36029032/103273243-cbcfa700-49f9-11eb-9b86-79c91c8c6ff1.png">
 
-h2o.shutdown() # shut down the h2o
+    > h2o.shutdown() # shut down the h2o
+    Are you sure you want to shutdown the H2O instance running at http://localhost:54321/ (Y/N)? y
+    TRUE
 
-<img width="988" alt="Screenshot 2563-12-30 at 5 36 48 PM" src="https://user-images.githubusercontent.com/36029032/103342946-c5a6fc80-4ac5-11eb-83fc-725e53b3af59.png">
 
 # Contact
 

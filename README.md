@@ -1,4 +1,4 @@
-![logo](https://user-images.githubusercontent.com/36029032/103455596-7cef7d80-4d29-11eb-91c8-f48815924b88.png)
+![logo](https://user-images.githubusercontent.com/36029032/103455596-7cef7d80-4d29-11eb-91c8-f48815924b88.png){ width: 200px; }
 
 **Deep** learning of **D**rug **R**esponse using **k**ernel-based data integration.
 
@@ -93,8 +93,6 @@ DT.csv
        .
        .
 
-
-
 The example of all input files can be found in the “data” folder of the Github repository.
 
 3. Running DeepDRK
@@ -115,9 +113,11 @@ Usage example:
     > load("~/DeepDRK/combination_data.RData") #load the training RData
     > source('~/DeepDRK/DeepDRKpredictor.R')
     > predictions<-DeepDRKpredictor(cell_tst,drug_tst)
-
-<img width="348" alt="Screenshot 2563-12-29 at 11 49 02 AM" src="https://user-images.githubusercontent.com/36029032/103273130-8c08bf80-49f9-11eb-834a-d53cded05b17.png">
-
+          cell       drug       prob
+     1    697      Imatinib    0.881
+     2  A3-KAW     Imatinib    0.819
+     3    697   Gemcitabline   0.122
+     4  A3-KAW  Gemcitabline   0.158
 As shown in the following figure of the experimental data, we observed that cell lines 697 and A3-KAW tend to be sensitive to Imatinib and these two cell lines were prune to be resistant to Gemcitabine, consistent with the prediction from DeepDRK. 
 
 ![example-test-AUCDR](https://user-images.githubusercontent.com/36029032/103406015-1dac3480-4b94-11eb-8981-31293cd1d231.png)
@@ -142,8 +142,11 @@ In case the mutation, methylation and target proteins are missing
     > load("~/DeepDRK/combination_data.RData") #load the training RData
     > source('~/DeepDRK/DeepDRKpredictor.e.R')
     > predictions<-DeepDRKpredictor.e(cell_tst,drug_tst,missCtype,missDtype)
-
-<img width="346" alt="Screenshot 2563-12-29 at 4 51 48 PM" src="https://user-images.githubusercontent.com/36029032/103273243-cbcfa700-49f9-11eb-9b86-79c91c8c6ff1.png">
+    cell       drug       prob
+     1    697      Imatinib    0.706
+     2  A3-KAW     Imatinib    0.721
+     3    697   Gemcitabline   0.127
+     4  A3-KAW  Gemcitabline   0.125
 
     > h2o.shutdown() # shut down the h2o
     Are you sure you want to shutdown the H2O instance running at http://localhost:54321/ (Y/N)? y

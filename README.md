@@ -118,13 +118,13 @@ Usage example:
      2  A3-KAW     Imatinib    0.819
      3    697   Gemcitabline   0.122
      4  A3-KAW  Gemcitabline   0.158
+     > h2o.shutdown() # shut down the h2o
+     Are you sure you want to shutdown the H2O instance running at http://localhost:54321/ (Y/N)? y
+     TRUE
+     
 As shown in the following figure of the experimental data, we observed that cell lines 697 and A3-KAW tend to be sensitive to Imatinib and these two cell lines were prune to be resistant to Gemcitabine, consistent with the prediction from DeepDRK. 
 
 ![example-test-AUCDR](https://user-images.githubusercontent.com/36029032/103406015-1dac3480-4b94-11eb-8981-31293cd1d231.png)
-
-    > h2o.shutdown() # shut down the h2o
-    Are you sure you want to shutdown the H2O instance running at http://localhost:54321/ (Y/N)? y
-    TRUE
 
 Moreover, DeepDRK could also handle task with missing features using the DeepDRKpredictor.e R function. Here is the example showing how to use it:
 

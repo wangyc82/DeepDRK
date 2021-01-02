@@ -1,4 +1,4 @@
-![logo](https://user-images.githubusercontent.com/36029032/103455596-7cef7d80-4d29-11eb-91c8-f48815924b88.png){ width: 200px; }
+<img src="https://user-images.githubusercontent.com/36029032/103455596-7cef7d80-4d29-11eb-91c8-f48815924b88.png" width="200">
 
 **Deep** learning of **D**rug **R**esponse using **k**ernel-based data integration.
 
@@ -142,7 +142,7 @@ In case the mutation, methylation and target proteins are missing
     > load("~/DeepDRK/combination_data.RData") #load the training RData
     > source('~/DeepDRK/DeepDRKpredictor.e.R')
     > predictions<-DeepDRKpredictor.e(cell_tst,drug_tst,missCtype,missDtype)
-    cell       drug       prob
+          cell       drug       prob
      1    697      Imatinib    0.706
      2  A3-KAW     Imatinib    0.721
      3    697   Gemcitabline   0.127

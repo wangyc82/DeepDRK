@@ -37,8 +37,9 @@ Early prediction of therapeutic response of cancer patients is a critical step i
     - h2o package (h2o_3.32.0.1.tgz) and its dependencies.
 
     Testing of successful installation by running the following commands in R:
-     > library(readr)
-     > h2o.init()
+     
+       > library(readr)
+       > h2o.init()
 
 
 2. Preparation of the input files

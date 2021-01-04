@@ -14,7 +14,7 @@ Early prediction of therapeutic response of cancer patients is a critical step i
 
 1. Installation
 
-   Prerequisites of DeepDRK including: 
+   Prerequisites of DeepDRK includes the following: 
 
    - R is properly installed; 
 
@@ -22,13 +22,13 @@ Early prediction of therapeutic response of cancer patients is a critical step i
 
    - git (2.21.1)
 
-    Installation: 
+    Installation of DeepDR includes the following steps:
 
     - step 1: git clone https://github.com/wangyc82/DeepDRK;
 
     - step 2: download the combined training data (combination_data.RData) from https://wanglab.shinyapps.io/DeepDRK/, and put it in the DeepDRK folder.
 
-    Dependencies of DeepDRK including 
+    Dependencies of DeepDRK includes the following: 
 
     - Readr1.3.1 and all its dependencies;
 

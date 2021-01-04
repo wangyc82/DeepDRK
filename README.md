@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/36029032/103455596-7cef7d80-4d29-11eb-91c8-f48815924b88.png" width="200">
+<img src="https://user-images.githubusercontent.com/36029032/103525552-60cf1600-4eba-11eb-910e-b4a0ffb3e018.png" width="200">
 
 **Deep** learning of **D**rug **R**esponse using **k**ernel-based data integration.
 
@@ -14,15 +14,15 @@ Early prediction of therapeutic response of cancer patients is a critical step i
 
 1. Installation
 
-Prerequisites: 
+   Prerequisites of DeepDRK including: 
 
-- R is properly installed; 
+   - R is properly installed; 
 
-- Rscript is available in your system path ($PATH);
+   - Rscript is available in your system path ($PATH);
 
-- git (2.21.1)
+   - git (2.21.1)
 
-Installation: 
+    Installation: 
 
 - step 1: git clone https://github.com/wangyc82/DeepDRK;
 

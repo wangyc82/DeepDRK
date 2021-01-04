@@ -72,8 +72,8 @@ DeepDRKpredictor.e<-function(cell_tst,drug_tst,missCtype,missDtype)
   
   Csim_mut<-exp(-as.matrix(dist(rbind(cell_mut[,intersect(colnames(cell_mut),colnames(cell_trs_mut))],cell_trs_mut[,intersect(colnames(cell_mut),colnames(cell_trs_mut))]),method = "binary")))
   Csim_CN<-exp(-0.001*as.matrix(dist(rbind(cell_CN[,intersect(colnames(cell_CN),colnames(cell_trs_CN))],cell_trs_CN[,intersect(colnames(cell_CN),colnames(cell_trs_CN))]))))
-  Csim_methy<-exp(-0.001*as.matrix(dist(rbind(cell_methy[,intersect(colnames(cell_methy),colnames(cell_trs_methy))],cell_trs_methy[,intersect(colnames(cell_methy),colnames(cell_trs_methy))]))))
-  Csim_exp<-exp(-0.001*as.matrix(dist(rbind(cell_exp[,match(intersect(colnames(cell_exp),colnames(cell_trs_exp)),colnames(cell_exp))],cell_trs_exp[,match(intersect(colnames(cell_exp),colnames(cell_trs_exp)),colnames(cell_trs_exp))]))))
+  Csim_methy<-exp(-0.01*as.matrix(dist(rbind(cell_methy[,intersect(colnames(cell_methy),colnames(cell_trs_methy))],cell_trs_methy[,intersect(colnames(cell_methy),colnames(cell_trs_methy))]))))
+  Csim_exp<-exp(-0.1*as.matrix(dist(rbind(cell_exp[,match(intersect(colnames(cell_exp),colnames(cell_trs_exp)),colnames(cell_exp))],cell_trs_exp[,match(intersect(colnames(cell_exp),colnames(cell_trs_exp)),colnames(cell_trs_exp))]))))
   
   Csim_ls<-list()
   Csim_ls[[1]]<-Csim_mut

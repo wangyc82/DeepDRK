@@ -24,21 +24,22 @@ Early prediction of therapeutic response of cancer patients is a critical step i
 
     Installation: 
 
-- step 1: git clone https://github.com/wangyc82/DeepDRK;
+    - step 1: git clone https://github.com/wangyc82/DeepDRK;
 
-- step 2: download the combined training data (combination_data.RData) from https://wanglab.shinyapps.io/DeepDRK/, and put it in the DeepDRK folder.
+    - step 2: download the combined training data (combination_data.RData) from https://wanglab.shinyapps.io/DeepDRK/, and put it in the DeepDRK folder.
 
-Dependencies: 
+    Dependencies of DeepDRK including 
 
-- Readr1.3.1 and all its dependencies;
+    - Readr1.3.1 and all its dependencies;
 
-- Oracle JDK (Java SE Development Kit 11.0.9);
+    - Oracle JDK (Java SE Development Kit 11.0.9);
 
-- h2o package (h2o_3.32.0.1.tgz) and its dependencies.
+    - h2o package (h2o_3.32.0.1.tgz) and its dependencies.
 
-Testing of successful installation by running the following commands in R:
+    Testing of successful installation by running the following commands in R:
+     > library(readr)
+     > h2o.init()
 
-![DeepDRKgithub1](https://user-images.githubusercontent.com/36029032/103272576-341d8900-49f8-11eb-9164-99cf3174aa95.png)
 
 2. Preparation of the input files
 

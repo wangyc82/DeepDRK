@@ -39,6 +39,7 @@ Early prediction of therapeutic response of cancer patients is a critical step i
     Testing of successful installation by running the following commands in R:
      
        > library(readr)
+       > library(h2o)
        > h2o.init()
 
 

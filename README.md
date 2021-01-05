@@ -32,9 +32,9 @@ Early prediction of therapeutic response of cancer patients is a critical step i
 
     - Readr1.3.1 and all its dependencies;
 
-    - Oracle JDK (Java SE Development Kit 11.0.9);
+    - Oracle JDK ([Java SE Development Kit 11.0.9] (https://www.oracle.com/java/technologies/javase-jdk11-downloads.html));
 
-    - h2o package (h2o_3.32.0.1.tgz) and its dependencies.
+    - h2o package (Version 3.32.0.1 [h2o_3.32.0.1.zip] (https://h2o-release.s3.amazonaws.com/h2o/rel-zermelo/1/index.html)) and its dependencies.
 
     Testing of successful installation by running the following commands in R:
      
@@ -117,9 +117,9 @@ Usage example:
     > source('~/DeepDRK/DeepDRKpredictor.R')
     > predictions<-DeepDRKpredictor(cell_tst,drug_tst)
           cell       drug       prob
-     1    697      Imatinib    0.881
-     2  A3-KAW     Imatinib    0.819
-     3    697   Gemcitabline   0.122
+     1    697      Imatinib    0.193
+     2  A3-KAW     Imatinib    0.226
+     3    697   Gemcitabline   0.165
      4  A3-KAW  Gemcitabline   0.158
      > h2o.shutdown() # shut down the h2o
      Are you sure you want to shutdown the H2O instance running at http://localhost:54321/ (Y/N)? y

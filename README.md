@@ -32,9 +32,9 @@ Early prediction of therapeutic response of cancer patients is a critical step i
 
     - Readr1.3.1 and all its dependencies;
 
-    - Oracle JDK (![Java SE Development Kit 11.0.9] (https://www.oracle.com/java/technologies/javase-jdk11-downloads.html));
+    - Oracle JDK (Version 11.0.9 [Java SE Development Kit 11.0.9](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html));
 
-    - h2o package (Version 3.32.0.1 ![h2o_3.32.0.1.zip] (https://h2o-release.s3.amazonaws.com/h2o/rel-zermelo/1/index.html)) and its dependencies.
+    - h2o package (Version 3.32.0.1 [h2o_3.32.0.1.zip](https://h2o-release.s3.amazonaws.com/h2o/rel-zermelo/1/index.html)) and its dependencies.
 
     Testing of successful installation by running the following commands in R:
      
@@ -116,18 +116,8 @@ Usage example:
     > load("~/DeepDRK/combination_data.RData") #load the training RData
     > source('~/DeepDRK/DeepDRKpredictor.R')
     > predictions<-DeepDRKpredictor(cell_tst,drug_tst)
-          cell       drug       prob
-     1    697      Imatinib    0.193
-     2  A3-KAW     Imatinib    0.226
-     3    697   Gemcitabline   0.165
-     4  A3-KAW  Gemcitabline   0.158
-     > h2o.shutdown() # shut down the h2o
      Are you sure you want to shutdown the H2O instance running at http://localhost:54321/ (Y/N)? y
      TRUE
-     
-As shown in the following figure of the experimental data, we observed that cell lines 697 and A3-KAW tend to be sensitive to Imatinib and these two cell lines were prune to be resistant to Gemcitabine, consistent with the prediction from DeepDRK. 
-
-![example-test-AUCDR](https://user-images.githubusercontent.com/36029032/103406015-1dac3480-4b94-11eb-8981-31293cd1d231.png)
 
 Moreover, DeepDRK could also handle task with missing features using the DeepDRKpredictor.e R function. Here is the example showing how to use it:
 
@@ -144,14 +134,7 @@ In case the mutation, methylation and target proteins are missing
     > missDtype=2
     > load("~/DeepDRK/combination_data.RData") #load the training RData
     > source('~/DeepDRK/DeepDRKpredictor.e.R')
-    > predictions<-DeepDRKpredictor.e(cell_tst,drug_tst,missCtype,missDtype)
-          cell       drug       prob
-     1    697      Imatinib    0.706
-     2  A3-KAW     Imatinib    0.721
-     3    697   Gemcitabline   0.127
-     4  A3-KAW  Gemcitabline   0.125
-
-    > h2o.shutdown() # shut down the h2o
+    > predictions<-DeepDRKpredictor.e(cell_tst,drug_tst,missCtype,missDtype)        
     Are you sure you want to shutdown the H2O instance running at http://localhost:54321/ (Y/N)? y
     TRUE
 

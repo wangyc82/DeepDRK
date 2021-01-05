@@ -32,9 +32,9 @@ Early prediction of therapeutic response of cancer patients is a critical step i
 
     - Readr1.3.1 and all its dependencies;
 
-    - Oracle JDK ([Java SE Development Kit 11.0.9] (https://www.oracle.com/java/technologies/javase-jdk11-downloads.html));
+    - Oracle JDK (![Java SE Development Kit 11.0.9] (https://www.oracle.com/java/technologies/javase-jdk11-downloads.html));
 
-    - h2o package (Version 3.32.0.1 [h2o_3.32.0.1.zip] (https://h2o-release.s3.amazonaws.com/h2o/rel-zermelo/1/index.html)) and its dependencies.
+    - h2o package (Version 3.32.0.1 ![h2o_3.32.0.1.zip] (https://h2o-release.s3.amazonaws.com/h2o/rel-zermelo/1/index.html)) and its dependencies.
 
     Testing of successful installation by running the following commands in R:
      

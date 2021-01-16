@@ -94,7 +94,7 @@ DeepDRKpredictor<-function(cell_tst,drug_tst)
   cat("convert testing data \n")
   test.hex <- as.h2o(data_tst)
   cat("bulid the training model \n")
-  model=h2o.deeplearning(x = 1:ncol(Xrn), y = ncol(Xrn)+1, training_frame = train.hex, validation=test.hex,hidden=c(200,200), epochs=10, activation="Tanh",seed=1, reproducible=T)
+  model=h2o.deeplearning(x = 1:ncol(Xrn), y = ncol(Xrn)+1, training_frame = train.hex, hidden=c(200,200), epochs=10, activation="Tanh",seed=1, reproducible=T)
   cat("performing the prediction \n")
   model_prediction<-h2o.predict(model, test.hex)
   prob_test<-as.data.frame(model_prediction)[,1]

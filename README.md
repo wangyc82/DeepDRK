@@ -141,4 +141,4 @@ In case the mutation, methylation and target proteins are missing
 
 # Contact
 
-For technical issues please send an email to ycwang@nwipb.cas.cn.
+For technical issues please send an email to wangyongcui@mail.kib.ac.cn.
